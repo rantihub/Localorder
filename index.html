@@ -2,556 +2,196 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Localorder - Feedlink Asaba Hub</title>
     <style>
         :root {
             --primary: #1a5d1a;
-            --primary-light: #e8f5e9;
-            --primary-dark: #0d3d0d;
             --accent: #fbc02d;
-            --accent-dark: #f9a825;
             --bg: #f0f2f5;
-            --surface: #ffffff;
-            --text: #1a1a1a;
-            --text-secondary: #666666;
-            --text-muted: #999999;
-            --border: #e0e0e0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
+            --text: #333;
+            --white: #ffffff;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg);
             margin: 0;
             padding: 0;
             color: var(--text);
-            padding-bottom: 200px;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            padding-bottom: 180px;
         }
 
-        /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--surface);
-            padding: 20px 16px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        header .subtitle {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            margin-top: 4px;
-            font-weight: 400;
-        }
-
-        /* Container */
         .container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 12px 16px;
+            padding: 10px;
         }
 
-        /* Customer Card */
         .customer-card {
-            background: var(--surface);
-            padding: 20px;
-            border-radius: var(--radius-lg);
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .customer-card:focus-within {
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary);
+            background: var(--white);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .customer-card label {
             display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-weight: bold;
+            margin-bottom: 5px;
             color: var(--primary);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .customer-card input {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--border);
-            border-radius: var(--radius-md);
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
             box-sizing: border-box;
             font-size: 1rem;
-            font-family: inherit;
-            transition: var(--transition);
-            background: var(--bg);
         }
 
-        .customer-card input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: var(--surface);
-            box-shadow: 0 0 0 3px rgba(26, 93, 26, 0.1);
-        }
-
-        .customer-card input::placeholder {
-            color: var(--text-muted);
-        }
-
-        /* Category Block */
         .category-block {
-            background: var(--surface);
-            border-radius: var(--radius-lg);
-            margin-bottom: 16px;
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .category-block:hover {
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .category-title {
-            background: linear-gradient(90deg, var(--primary-light) 0%, #f1f8e9 100%);
+            background: #e8f5e9;
             color: var(--primary);
-            padding: 14px 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 12px 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #ddd;
         }
 
-        .category-title::before {
-            content: '';
-            width: 4px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        /* Product Item */
         .product-item {
             display: grid;
             grid-template-columns: 2fr 1fr 1.2fr;
-            padding: 16px 20px;
-            border-bottom: 1px solid #f0f0f0;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
             align-items: center;
-            gap: 12px;
-            transition: var(--transition);
         }
 
-        .product-item:last-child {
-            border-bottom: none;
-        }
-
-        .product-item:hover {
-            background: #fafafa;
-        }
-
-        .product-name { 
-            font-weight: 600; 
-            font-size: 0.95rem; 
-            line-height: 1.4;
-        }
-
-        .product-meta { 
-            font-size: 0.8rem; 
-            color: var(--text-secondary); 
-            display: block;
-            margin-top: 2px;
-            font-weight: 500;
-        }
-
-        /* Quantity Input */
-        .qty-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        .product-name { font-weight: 600; font-size: 0.95rem; }
+        .product-meta { font-size: 0.8rem; color: #666; display: block; }
 
         input[type="number"] {
-            width: 100%;
-            max-width: 80px;
-            padding: 10px 8px;
-            border: 2px solid var(--border);
-            border-radius: var(--radius-sm);
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
             text-align: center;
             font-size: 1rem;
-            font-weight: 600;
-            font-family: inherit;
-            transition: var(--transition);
-            -moz-appearance: textfield;
-        }
-
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        input[type="number"]:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 93, 26, 0.1);
-        }
-
-        input[type="number"].has-value {
-            border-color: var(--primary);
-            background: var(--primary-light);
-            color: var(--primary);
         }
 
         .sales-value {
             text-align: right;
-            font-weight: 700;
+            font-weight: bold;
             color: var(--primary);
-            font-size: 0.95rem;
-            font-variant-numeric: tabular-nums;
         }
 
-        .sales-value.zero {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Summary Panel */
         .summary-panel {
-            background: var(--surface);
-            padding: 24px;
-            border-radius: var(--radius-lg);
-            margin-top: 16px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
             display: none;
             border-left: 5px solid var(--accent);
-            box-shadow: var(--shadow-md);
-            animation: slideUp 0.3s ease-out;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .summary-panel h3 {
-            margin: 0 0 16px 0;
-            color: var(--primary);
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .summary-panel pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            font-family: 'SF Mono', Monaco, monospace;
-            font-size: 0.85rem;
-            background: var(--bg);
-            padding: 16px;
-            border-radius: var(--radius-md);
-            margin: 0;
-            line-height: 1.6;
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        button {
-            padding: 14px 20px;
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.875rem;
-        }
-
-        button:active {
-            transform: scale(0.98);
-        }
-
-        button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        button:active::after {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-view { 
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); 
-            color: #000; 
-            box-shadow: 0 4px 12px rgba(251, 192, 45, 0.3);
-        }
-
-        .btn-view:hover {
-            box-shadow: 0 6px 16px rgba(251, 192, 45, 0.4);
-            transform: translateY(-1px);
-        }
-
-        .btn-wa { 
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); 
-            color: #fff; 
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-wa:hover {
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
-            transform: translateY(-1px);
-        }
-
-        .btn-reset { 
-            background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%); 
-            color: #fff; 
-            box-shadow: 0 4px 12px rgba(255, 82, 82, 0.3);
-        }
-
-        .btn-reset:hover {
-            box-shadow: 0 6px 16px rgba(255, 82, 82, 0.4);
-            transform: translateY(-1px);
-        }
-
-        .btn-month { 
-            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); 
-            color: #fff; 
-            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
-        }
-
-        .btn-month:hover {
-            box-shadow: 0 6px 16px rgba(33, 150, 243, 0.4);
-            transform: translateY(-1px);
-        }
-
-        /* Footer Navigation */
         .footer-nav {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-            padding: 16px 20px;
+            background: var(--white);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+            padding: 15px;
             box-sizing: border-box;
             z-index: 1001;
-            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
         .total-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .total-label {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-
-        .total-weight {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            font-weight: 600;
-            background: var(--primary-light);
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-
-        .total-naira {
-            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
             font-weight: 800;
-            color: var(--primary);
-            font-variant-numeric: tabular-nums;
         }
 
         .btn-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 10px;
         }
 
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100px);
-            background: var(--text);
-            color: white;
-            padding: 12px 24px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
             font-size: 0.9rem;
-            z-index: 2000;
-            opacity: 0;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-lg);
         }
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
+        .btn-view { background: var(--accent); color: #000; }
+        .btn-wa { background: #25D366; color: #fff; }
+        .btn-reset { background: #ff5252; color: #fff; width: 100%; margin-top: 10px; }
+        .btn-month { background: #2196F3; color: #fff; width: 100%; margin-top: 10px; }
 
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-        }
-
-        .empty-state-icon {
-            font-size: 3rem;
-            margin-bottom: 12px;
-            opacity: 0.5;
-        }
-
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #ccc;
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #aaa;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            .product-item {
-                grid-template-columns: 1.8fr 1fr 1fr;
-                padding: 14px 16px;
-                gap: 8px;
-            }
-            
-            .total-naira {
-                font-size: 1.25rem;
-            }
-            
-            header h1 {
-                font-size: 1.25rem;
-            }
-        }
-
-        /* Loading Animation */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .loading {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
+        pre { white-space: pre-wrap; word-wrap: break-word; font-family: inherit; font-size: 0.9rem; background: #f9f9f9; padding: 10px; border-radius: 5px;}
     </style>
 </head>
 <body>
 
 <header>
     <h1>Localorder</h1>
-    <div class="subtitle">Feedlink Asaba Hub</div>
 </header>
 
 <div class="container">
     <div class="customer-card">
         <label for="cust-name">Customer Name</label>
-        <input type="text" id="cust-name" placeholder="Enter customer name..." oninput="saveCustomerName()" autocomplete="off">
+        <input type="text" id="cust-name" placeholder="Enter customer name..." oninput="saveCustomerName()">
     </div>
 </div>
 
 <div class="container" id="main-list">
-</div>
+    </div>
 
 <div class="container">
     <div id="summary-display" class="summary-panel">
         <h3 id="sum-type">Order Details</h3>
         <div id="summary-text"></div>
     </div>
-    <div class="action-buttons">
-        <button class="btn-month" onclick="showMonthlySummary()">View Monthly History</button>
-        <button class="btn-reset" onclick="resetOrder()">Clear Current Order</button>
-    </div>
+    <button class="btn-month" onclick="showMonthlySummary()">View Monthly History</button>
+    <button class="btn-reset" onclick="resetOrder()">Clear Current Order</button>
 </div>
 
 <div class="footer-nav">
     <div class="total-row">
-        <div>
-            <span class="total-label">Total Weight</span>
-            <span class="total-weight" id="total-weight">0kg</span>
-        </div>
-        <div class="total-naira" id="total-naira">₦0.00</div>
+        <span>Total: <small id="total-weight">0kg</small></span>
+        <span id="total-naira">₦0.00</span>
     </div>
     <div class="btn-grid">
         <button class="btn-view" onclick="showSummary()">Show Summary</button>
         <button class="btn-wa" onclick="sendWhatsApp()">WhatsApp Order</button>
     </div>
 </div>
-
-<div class="toast" id="toast"></div>
 
 <script>
     const productData = [
@@ -616,17 +256,10 @@
                     <div class="product-item">
                         <div class="product-name">
                             ${item.name}
-                            <span class="product-meta">₦${item.price.toLocaleString()} • ${item.w}kg</span>
+                            <span class="product-meta">₦${item.price.toLocaleString()} | ${item.w}kg</span>
                         </div>
-                        <div class="qty-wrapper">
-                            <input type="number" min="0" value="${qty}" 
-                                class="${qty > 0 ? 'has-value' : ''}"
-                                oninput="updateItem('${item.name}', this.value)" 
-                                aria-label="Quantity for ${item.name}">
-                        </div>
-                        <div class="sales-value ${qty === 0 ? 'zero' : ''}" id="val-${item.name}">
-                            ₦${(qty * item.price).toLocaleString()}
-                        </div>
+                        <input type="number" min="0" value="${qty}" oninput="updateItem('${item.name}', this.value)">
+                        <div class="sales-value" id="val-${item.name}">₦${(qty * item.price).toLocaleString()}</div>
                     </div>`;
             });
             section.innerHTML = html;
@@ -635,63 +268,36 @@
         updateTotals();
     }
 
-    function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
-    }
-
     function saveCustomerName() {
-        const name = document.getElementById('cust-name').value;
-        localStorage.setItem('localorder_customer', name);
+        localStorage.setItem('localorder_customer', document.getElementById('cust-name').value);
     }
 
     function updateItem(name, qty) {
-        const parsedQty = parseInt(qty) || 0;
-        currentOrder[name] = parsedQty;
+        currentOrder[name] = parseInt(qty) || 0;
         localStorage.setItem('localorder_current', JSON.stringify(currentOrder));
         const product = productData.flatMap(g => g.items).find(i => i.name === name);
-        const valEl = document.getElementById(`val-${name}`);
-        const inputEl = document.querySelector(`input[aria-label="Quantity for ${name}"]`);
-        
-        valEl.innerText = `₦${(parsedQty * product.price).toLocaleString()}`;
-        valEl.classList.toggle('zero', parsedQty === 0);
-        
-        if (inputEl) {
-            inputEl.classList.toggle('has-value', parsedQty > 0);
-        }
-        
+        document.getElementById(`val-${name}`).innerText = `₦${(currentOrder[name] * product.price).toLocaleString()}`;
         updateTotals();
     }
 
     function updateTotals() {
         let totalCash = 0;
         let totalWeight = 0;
-        let activeItems = 0;
-        
         productData.flatMap(g => g.items).forEach(item => {
             const qty = currentOrder[item.name] || 0;
             totalCash += qty * item.price;
             totalWeight += qty * item.w;
-            if (qty > 0) activeItems++;
         });
-        
         document.getElementById('total-naira').innerText = `₦${totalCash.toLocaleString()}`;
         document.getElementById('total-weight').innerText = `${totalWeight.toLocaleString()}kg`;
-        
-        // Visual feedback on total
-        const totalEl = document.getElementById('total-naira');
-        totalEl.style.transform = 'scale(1.05)';
-        setTimeout(() => totalEl.style.transform = 'scale(1)', 150);
     }
 
     function getSummary() {
         const cName = document.getElementById('cust-name').value || "Valued Customer";
-        let text = `*ORDER DETAILS*\\n`;
-        text += `Customer: ${cName}\\n`;
-        text += `Date: ${new Date().toLocaleDateString('en-GB')}\\n`;
-        text += `--------------------\\n`;
+        let text = `*ORDER DETAILS*\n`;
+        text += `Customer: ${cName}\n`;
+        text += `Date: ${new Date().toLocaleDateString()}\n`;
+        text += `--------------------\n`;
         
         let totalCash = 0;
         let totalWeight = 0;
@@ -702,7 +308,7 @@
             if (qty > 0) {
                 const lineVal = qty * item.price;
                 const lineW = qty * item.w;
-                text += `• ${item.name}: ${qty} qty × ₦${item.price.toLocaleString()} = ₦${lineVal.toLocaleString()} (${lineW}kg)\\n`;
+                text += `• ${item.name}: ${qty} qty × ₦${item.price.toLocaleString()} = ₦${lineVal.toLocaleString()} (${lineW}kg)\n`;
                 totalCash += lineVal;
                 totalWeight += lineW;
                 totalQty += qty;
@@ -711,7 +317,7 @@
 
         if (totalQty === 0) return "No items in order.";
 
-        text += `--------------------\\n*Total Qty:* ${totalQty}\\n*Total Weight:* ${totalWeight}kg\\n*GRAND TOTAL: ₦${totalCash.toLocaleString()}*`;
+        text += `--------------------\n*Total Qty:* ${totalQty}\n*Total Weight:* ${totalWeight}kg\n*GRAND TOTAL: ₦${totalCash.toLocaleString()}*`;
         return text;
     }
 
@@ -720,20 +326,13 @@
         document.getElementById('sum-type').innerText = "Order Details";
         document.getElementById('summary-text').innerHTML = `<pre>${getSummary()}</pre>`;
         display.style.display = 'block';
-        display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        window.scrollTo(0, document.body.scrollHeight);
     }
 
     function sendWhatsApp() {
-        const summary = getSummary();
-        if (summary === "No items in order.") {
-            showToast("Add items to order first!");
-            return;
-        }
-        
         saveToMonthly();
-        const text = encodeURIComponent(summary);
+        const text = encodeURIComponent(getSummary());
         window.open(`https://wa.me/?text=${text}`, '_blank');
-        showToast("Opening WhatsApp...");
     }
 
     function saveToMonthly() {
@@ -758,20 +357,17 @@ Total Weight for Month: ${monthly.weight.toLocaleString()} kg
 Total Value for Month: ₦${monthly.value.toLocaleString()}
             </pre>`;
         display.style.display = 'block';
-        display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     function resetOrder() {
-        if(confirm("Clear current order and customer name? This cannot be undone.")) {
+        if(confirm("Clear current order and customer name?")) {
             currentOrder = {};
             localStorage.removeItem('localorder_current');
             localStorage.removeItem('localorder_customer');
-            showToast("Order cleared");
-            setTimeout(() => location.reload(), 500);
+            location.reload();
         }
     }
 
-    // Initialize
     init();
 </script>
 </body>
